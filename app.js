@@ -13,17 +13,20 @@ app.use('/', express.static(path.join(__dirname, 'web/build')))
 // })
 
 
-app.get('/profile', (req, res) => {
+app.get('/api/v1/profile', (req, res) => {
     res.send('here is your profile')
 })
-app.post('/profile', (req, res) => {
+app.post('/api/v1/profile', (req, res) => {
     res.send('profile created')
 })
-app.put('/profile', (req, res) => {
+app.put('/api/v1/profile', (req, res) => {
     res.send('profile updated')
 })
-app.delete('/profile', (req, res) => {
+app.delete('/api/v1/profile', (req, res) => {
     res.send('profile deleted')
+})
+app.get("/**", (req, res, next) => {
+    res.sendFile(path.join(__dirname, "./web/build/index.html"))
 })
 
 
